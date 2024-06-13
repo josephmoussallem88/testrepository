@@ -1,14 +1,16 @@
-resource "github_repository" "github_rep" {
-  name        = "TestProject"
-  description = "testing terraform with github"
-
-  visibility = "public"
-
-  template {
-    owner                = "github"
-    repository           = "terraform-template-module"
-    include_all_branches = true
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+    }
   }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "eu-west-3"
+  #access_key = var.aws_access_key
+  #secret_key = var.aws_secret_key
 }
 
 module "compute" {
