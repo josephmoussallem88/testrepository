@@ -12,7 +12,15 @@ resource "aws_s3_bucket_website_configuration" "Website" {
   bucket = aws_s3_bucket.Website.bucket
 
   index_document {
-    suffix = "index.html"
+    suffix = "readme.html"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.Website.id
+  versioning_configuration {
+    status = "Enabled"
+
   }
 }
 
